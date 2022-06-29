@@ -1,3 +1,3 @@
-# Stream_Lambda_Optional
+# About Stream, Lambda and Optional
 Java8
 
