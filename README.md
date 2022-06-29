@@ -1,4 +1,4 @@
-#Java8
+# Java 8
 
 ## About Stream
 Interface Stream<T> - синтаксическое упрощение работы с коллекциями или с массивами. 
