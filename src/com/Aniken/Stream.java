@@ -1,5 +1,6 @@
 package com.Aniken;
 
+import java.util.Collection;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
@@ -50,7 +51,15 @@ public class Stream {
         .max(Comparator.comparing(Person::getAge))
         .map(Person::getName);
 
-    oldest.ifPresent(System.out::println);
+    //oldest.ifPresent(System.out::println);
+
+    //Map vs FlatMap
+    List<Person> humans = getHumans();
+    humans.stream()
+        .flatMap(human -> human.getPets().stream())
+        .flatMap(Collection::stream)
+        .forEach(System.out::println);
+    //humans.stream().map(human -> human.getPets()).forEach(System.out::println);
   }
 
   private static List<Person> getPeople() {
@@ -62,6 +71,13 @@ public class Stream {
         new Person("Jamie Goa", 99, Gender.MALE),
         new Person("Anna Cook", 7, Gender.FEMALE),
         new Person("Zelda Brown", 120, Gender.FEMALE)
+    );
+  }
+
+  private static List<Person> getHumans () {
+    return List.of(
+        new Person("Antonio", 20, Gender.MALE, List.of(List.of("Lucy"))),
+        new Person("Alina Smith", 33, Gender.FEMALE, List.of(List.of("Simba")))
     );
   }
 
